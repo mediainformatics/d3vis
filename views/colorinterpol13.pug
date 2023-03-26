@@ -1,0 +1,15 @@
+div(id='color' class='clear')
+    span Linear Color Interpolation
+    br
+
+div(id='color-diverge' class='clear')
+    span Poly-Linear Color Interpolation
+    br
+
+
+
+div(class='control-group clear')
+    button(onclick="render(myData, divergingScale( 5), '#color-diverge')") Pivot at 5
+    button(onclick="render(myData, divergingScale(10), '#color-diverge')") Pivot at 10
+    button(onclick="render(myData, divergingScale(15), '#color-diverge')") Pivot at 15
+    button(onclick="render(myData, divergingScale(20), '#color-diverge')") Pivot at 20

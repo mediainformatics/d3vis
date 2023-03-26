@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    h1=title
+    h2 Bsp #{id}
+
+    // insert setup for individual examples
+    case id
+        when 6
+            include category06.pug
+        when 7
+            include category07.pug
+        when 8
+            include category08.pug
+        when 9
+            include scaling09.pug
+
+
+    // run examples
+    script(defer src='/javascripts/bsp'+id+'.js' type='module')

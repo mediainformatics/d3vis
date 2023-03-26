@@ -1,0 +1,17 @@
+h4 Curve Mode:
+div(class='control-group')
+    button(onclick='render(d3.curveLinear)') linear
+    button(onclick='render(d3.curveLinearClosed)') linear closed
+    button(onclick='render(d3.curveStepBefore)') step before
+    button(onclick='render(d3.curveStepAfter)') step after
+    button(onclick='render(d3.curveBasis)') basis
+    button(onclick='render(d3.curveBasisOpen)') basis open
+    button(onclick='render(d3.curveBasisClosed)') basis closed
+
+div(class='control-group')
+    button(onclick='render(d3.curveBundle)') bundle
+    button(onclick='render(d3.curveCardinal)') cardinal
+    button(onclick='render(d3.curveCardinalOpen)') cardinal open
+    button(onclick='render(d3.curveCardinalClosed)') cardinal closed
+    button(onclick='render(d3.curveMonotoneY)') monotone
+    button(onclick='render(d3.curveCatmullRom)') catmull rom
