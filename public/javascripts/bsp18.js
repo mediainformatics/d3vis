@@ -1,6 +1,8 @@
 const height = 500, width = 500, margin = 25;
+const xAxisLength = width - 2 * margin;
+const yAxisLength = height - 2 * margin;
 
-let xAxis, yAxis, xAxisLength, yAxisLength;
+let xAxis, yAxis;
 
 
 const svg = d3.select('body').append('svg')
@@ -9,14 +11,15 @@ const svg = d3.select('body').append('svg')
     .attr('height', height);
 
 function renderXAxis() {
-    xAxisLength = width - 2*margin;
-
-    const scale = d3.scaleLinear().domain([0,100]).range([0, xAxisLength]);
-    xAxis = d3.axisBottom().scale(scale);
+    const scale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([0, xAxisLength]);
+    xAxis = d3.axisBottom()
+        .scale(scale);
 
     svg.append('g')
         .attr('class', 'x-axis')
-        .attr('transform', () => "translate(" + margin + "," + (height-margin) + ")" )
+        .attr('transform', () => "translate(" + margin + "," + (height - margin) + ")")
         .call(xAxis);
 }
 
@@ -35,14 +38,15 @@ function renderXGridLines() {
 }
 
 function renderYAxis() {
-    yAxisLength = height - 2*margin;
-
-    const scale = d3.scaleLinear().domain([100, 0]).range([0, yAxisLength]);
-    yAxis = d3.axisLeft().scale(scale);
+    const scale = d3.scaleLinear()
+        .domain([100, 0])
+        .range([0, yAxisLength]);
+    yAxis = d3.axisLeft()
+        .scale(scale);
 
     svg.append('g')
         .attr('class', 'y-axis')
-        .attr('transform', () => "translate(" + margin + "," + margin + ")" )
+        .attr('transform', () => "translate(" + margin + "," + margin + ")")
         .call(yAxis);
 }
 
@@ -61,14 +65,16 @@ function renderYGridLines() {
 }
 
 function rescale() {
-    const max = Math.round(Math.random()*100);
+    const max = Math.round(Math.random() * 100);
 
-    xAxis.scale().domain([0,max]);
+    xAxis.scale()
+        .domain([0, max]);
     svg.select('g.x-axis')
         .transition()
         .call(xAxis);
 
-    yAxis.scale().domain([max, 0]);
+    yAxis.scale()
+        .domain([max, 0]);
     svg.select('g.y-axis')
         .transition()
         .call(yAxis);
