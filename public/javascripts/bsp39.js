@@ -4,7 +4,7 @@ class ScatterPlot extends Chart {
     #symbolTypes
 
     constructor() {
-        super(500,500);
+        super(500, 500);
         this.#symbolTypes = d3.scaleOrdinal()
             .range([
                 d3.symbolCircle,
@@ -12,7 +12,7 @@ class ScatterPlot extends Chart {
                 d3.symbolDiamond,
                 d3.symbolSquare,
                 d3.symbolStar,
-                d3.SymbolTriangle,
+                d3.symbolTriangle,
                 d3.symbolWye
             ]);
     }
@@ -23,17 +23,17 @@ class ScatterPlot extends Chart {
 
     render() {
         this.renderSetup();
-        this.data.forEach( (list, i) => {
-            const symbols = this.bodyG.selectAll('path._'+i)
+        this.data.forEach((list, i) => {
+            const symbols = this.bodyG.selectAll('path._' + i)
                 .data(list);
 
             symbols.enter()
                 .append('path')
                 .merge(symbols)
-                .attr('class', 'symbol _'+i)
+                .attr('class', 'symbol _' + i)
                 .classed(this.symbolTypes(i), true)
                 .transition()
-                .attr('transform', d => 'translate('+this.x(d.x)+','+this.y(d.y)+')')
+                .attr('transform', d => 'translate(' + this.x(d.x) + ',' + this.y(d.y) + ')')
                 .attr('d', d3.symbol().type(this.symbolTypes(i)));
         });
     }
@@ -52,8 +52,8 @@ const numberOfSeries = 5;
 const numberOfDataPoints = 11;
 
 let chart = new ScatterPlot();
-chart.x = d3.scaleLinear().domain([0,10]);
-chart.y = d3.scaleLinear().domain([0,10]);
+chart.x = d3.scaleLinear().domain([0, 10]);
+chart.y = d3.scaleLinear().domain([0, 10]);
 
 for (let i = 0; i < numberOfSeries; ++i) {
     chart.addSeries(
